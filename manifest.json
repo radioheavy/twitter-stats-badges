@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Twitter/X User Stats Badges",
+  "version": "1.0",
+  "description": "Twitter/X profillerinin yanına takipçi, tweet sayısı ve katılım tarihi badge'leri ekler",
+  "permissions": ["cookies"],
+  "host_permissions": ["https://x.com/*", "https://twitter.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
