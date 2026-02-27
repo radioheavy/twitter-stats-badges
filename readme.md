@@ -1,6 +1,6 @@
 # 🏷️ Twitter/X User Stats Badges
 
-Twitter/X'te kullanıcı adlarının yanına **tweet sayısı**, **takipçi sayısı** ve **hesap açılış tarihi** badge'leri ekleyen Chrome extension.
+Twitter/X'te kullanıcı adlarının yanına **tweet sayısı**, **takipçi sayısı**, **hesap açılış tarihi** ve **Credibility DNA skoru** badge'leri ekleyen; status sayfalarında da **Raid Radar** analizi yapan Chrome extension.
 
 ![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-blue?logo=googlechrome&logoColor=white)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-green)
@@ -18,8 +18,11 @@ Twitter'da bir takipçi listesine, timeline'a veya profil kartına baktığında
 | 📝 12.5K | Tweet sayısı | 🟠 Turuncu |
 | → 1.2K | Takipçi sayısı | 🔵 Mavi |
 | 📅 Ağu 2008 | Hesap açılış tarihi | 🟢 Yeşil |
+| 🧬 78 | Credibility DNA (0-100) | 🟩/🟨/🟥 |
 
-Böylece bir kullanıcıya bakar bakmaz hesabın ne kadar aktif olduğunu, ne zaman açıldığını ve kaç takipçisi olduğunu görebilirsin — her seferinde profile tıklamana gerek kalmaz.
+Böylece bir kullanıcıya bakar bakmaz hesabın ne kadar aktif olduğunu, ne zaman açıldığını, kaç takipçisi olduğunu ve hesap güvenilirlik sinyalini görebilirsin — her seferinde profile tıklamana gerek kalmaz.
+
+Status (`/status/...`) sayfalarında ise sağ altta çıkan **Raid Radar** paneli ile görünür reply hesaplarının toplu risk sinyalini görürsün.
 
 ## Kurulum
 
@@ -57,6 +60,23 @@ Gelen veri badge olarak DOM'a inject ediliyor
     ↓
 10 dakika cache'te tutuluyor
 ```
+
+### Credibility DNA nasıl hesaplanır?
+
+- Hesap yaşı
+- Takipçi/takip dengesi
+- Aktivite yoğunluğu (tweet/gün)
+- Profil sinyalleri (doğrulama, default profil fotoğrafı vb.)
+- Anormal davranış cezaları
+
+Sonuç 0-100 arası tek bir skor olarak gösterilir.
+
+### Raid Radar nasıl çalışır?
+
+- Sadece status sayfalarında çalışır
+- Görünen reply hesaplarından örnek alır
+- Yeni açılmış hesap oranı, düşük DNA oranı ve açılış dönemi kümelenmesini ölçer
+- Sonucu `Temiz / İzlemede / Orta / Yüksek` risk olarak panelde gösterir
 
 Extension, Twitter'ın kendi internal GraphQL API'sini (`UserByScreenName` endpoint'i) kullanır. Ekstra API key veya token gerekmez — zaten Twitter'a giriş yapmış olduğun session cookie'n (`ct0`) ile çalışır.
 
@@ -125,6 +145,8 @@ PR'lar ve issue'lar açıktır. Katkıda bulunmak istersen:
 
 ## Yapılabilecekler
 
+- [x] Credibility DNA (0-100) badge skoru
+- [x] Status sayfaları için Raid Radar paneli
 - [ ] Takip edilen (following) sayısını da gösterme opsiyonu
 - [ ] Badge renklerini ve görünümünü özelleştirme paneli (popup)
 - [ ] Firefox desteği

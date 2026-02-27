@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Twitter/X User Stats Badges",
-  "version": "1.0",
-  "description": "Twitter/X profillerinin yanına takipçi, tweet sayısı ve katılım tarihi badge'leri ekler",
+  "version": "1.1",
+  "description": "Twitter/X profillerine stats + Credibility DNA badge'leri ve status sayfalarına Raid Radar ekler",
   "permissions": ["cookies"],
   "host_permissions": ["https://x.com/*", "https://twitter.com/*"],
   "content_scripts": [
